@@ -1,0 +1,79 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+    <section id="meter-form">
+      <div class="card col-md-6">
+        <div class="card-body">
+
+          <form
+            class="form" 
+            [formGroup]="meterForm"
+            (ngSubmit)="onSubmit()"
+          >
+
+            <div class="form-group col-12">
+              <label for="customerId">Customer</label>
+              <input
+                type="text"
+                formControlName="customerId"
+                class="form-control"
+                name="customerId"
+                required
+                [ngClass]="{
+                  'is-invalid': submitted && f.customerId.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && f.customerId.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.customerId.errors.required">
+                  Contact Number is required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12">
+              <label for="meterNumber">Meter Number</label>
+              <input
+                type="text"
+                formControlName="meterNumber"
+                class="form-control"
+                name="meterNumber"
+                required                
+                [ngClass]="{
+                  'is-invalid': submitted && f.meterNumber.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && f.meterNumber.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.meterNumber.errors.required">
+                  Meter Number is required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12">
+              <label for="installationDate">Installation Date</label>
+              <input
+                type="text"
+                formControlName="installationDate"
+                class="form-control"
+                name="installationDate"
+                [ngClass]="{ 'is-invalid': submitted && f.installationDate.errors }"
+              />
+            </div>         
+
+            <div class="col-12">
+              <button type="submit" rippleEffect class="btn btn-primary mr-1">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
